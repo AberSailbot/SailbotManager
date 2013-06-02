@@ -71,10 +71,10 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		case "mock":
 		case "serial":
 		case "logfile":
-			RoutePlannerFrame.getInstance().setDataSource(message);
+			RobotManagerFrame.getInstance().setDataSource(message);
 			break;
 		case "Follow boat":
-			RoutePlannerFrame.getInstance().setFollowBoat(followBoat.isSelected());
+			RobotManagerFrame.getInstance().setFollowBoat(followBoat.isSelected());
 			Settings.set(Settings.FOLLOW_ROBOT, followBoat.isSelected());
 		}
 	}

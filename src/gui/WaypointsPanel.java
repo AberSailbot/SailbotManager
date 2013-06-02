@@ -128,7 +128,7 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 	}
 	
 	public void refreshMarkers(){
-		RoutePlannerFrame frame = RoutePlannerFrame.getInstance();
+		RobotManagerFrame frame = RobotManagerFrame.getInstance();
 		frame.getMap().removeAllWaypointMarkers();
 		for(int i = 0; i < this.waypoints.getPoints().size(); i++){
 			Coordinate c = this.waypoints.getPoints().get(i);
@@ -163,7 +163,7 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 	public void mouseReleased(MouseEvent arg0){
 		if(arg0.getButton()==MouseEvent.BUTTON1 && this.editable){
 			//System.out.println(arg0.getPoint());
-			RoutePlannerFrame frame = RoutePlannerFrame.getInstance();
+			RobotManagerFrame frame = RobotManagerFrame.getInstance();
 			Coordinate pos = frame.getMap().getPosition(arg0.getPoint());
 			//System.out.println(pos);
 			this.waypoints.add(pos);
