@@ -48,6 +48,19 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		none.setSelected(true);
 		
+		JMenu jumpMenu = new JMenu("Jump on map");
+		JMenuItem aber = new JMenuItem("Aberystwyth");
+		JMenuItem lake = new JMenuItem("Llyn-yr-oerfa");
+		JMenuItem gloucesterHarbour = new JMenuItem("Gloucester Harbor, MA");
+		
+		aber.addActionListener(this);
+		lake.addActionListener(this);
+		gloucesterHarbour.addActionListener(this);
+		
+		jumpMenu.add(aber);
+		jumpMenu.add(lake);
+		jumpMenu.add(gloucesterHarbour);
+		
 		mock.addActionListener(this);
 		serial.addActionListener(this);
 		log.addActionListener(this);
@@ -58,6 +71,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		this.add(dataSourceMenu);
 		this.add(followBoat);
+		this.add(jumpMenu);
 		this.setVisible(true);
 		
 		
@@ -76,6 +90,17 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		case "Follow boat":
 			RobotManagerFrame.getInstance().setFollowBoat(followBoat.isSelected());
 			Settings.set(Settings.FOLLOW_ROBOT, followBoat.isSelected());
+			break;
+		case "Aberystwyth":
+			RobotManagerFrame.getInstance().getMap().setDisplayPositionByLatLon(52.41156, -4.08975, 15);
+			break;
+		case "Llyn-yr-oerfa":
+			RobotManagerFrame.getInstance().getMap().setDisplayPositionByLatLon(52.4008, -3.8713, 15);
+			break;
+		case "Gloucester Harbor, MA":
+			RobotManagerFrame.getInstance().getMap().setDisplayPositionByLatLon(42.5976, -70.6675, 14);
+			break;
 		}
+		
 	}
 }

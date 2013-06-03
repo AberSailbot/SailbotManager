@@ -99,7 +99,7 @@ public class Settings{
 	private static void setDefaults(){
 		set(MAP_FOLDER, "map");
 		set(MAP_MAX_ZOOM, "18");
-		set(MAP_MIN_ZOOM, "15");
+		set(MAP_MIN_ZOOM, "14");
 		set(MAP_LAT, "52.41156"); //Aberystwyth
 		set(MAP_LON, "-4.08975");
 		set(FOLLOW_ROBOT, "false");
