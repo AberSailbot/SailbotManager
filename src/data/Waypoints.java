@@ -41,6 +41,34 @@ public class Waypoints{
 		this.points.clear();
 	}
 	
+	public boolean remove(int n){
+		if(n >= 0 && n < points.size()){
+			points.remove(n);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean moveUp(int n){
+		if(n > 0 && n < points.size()){
+			Coordinate temp = points.get(n);
+			points.set(n, points.get(n-1));
+			points.set(n-1, temp);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean moveDown(int n){
+		if(n >= 0 && n < points.size()-1){
+			Coordinate temp = points.get(n);
+			points.set(n, points.get(n+1));
+			points.set(n+1, temp);
+			return true;
+		}
+		return false;
+	}
+	
 	public String getStringRepresentation(int wpNumber){
 		DecimalFormat df = new DecimalFormat( "###0.0000" );
 		String s = "" + wpNumber + ": " 

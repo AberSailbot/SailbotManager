@@ -24,7 +24,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ListDataListener;
+import javax.swing.text.html.StyleSheet.ListPainter;
 
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.MapWaypointMarker;
@@ -67,10 +69,15 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		
 	}
 	
+	JPanel listPanel;
 	JList wpList = new JList();
 	JButton load, save, clear;
 	JPanel buttonsPanel, bottomPanel;
 	JPanel latLonPanel;
+	
+	JPanel wpEditPanel;
+	JButton up, down, remove;
+	
 	JTextField lat, lon;
 	JButton addWaypoint;
 	Waypoints waypoints;
@@ -84,7 +91,24 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		this.waypoints = wps;
 		
 		wpList = new JList(new WaypointListModel());
-		this.add(wpList, BorderLayout.CENTER);
+		listPanel = new JPanel(new BorderLayout());
+		listPanel.add(wpList, BorderLayout.CENTER);
+		this.add(listPanel, BorderLayout.CENTER);
+		
+		wpEditPanel = new JPanel(new FlowLayout());
+		up = new JButton("UP");
+		down = new JButton("DOWN");
+		remove = new JButton("REMOVE");
+		
+		up.addActionListener(this);
+		down.addActionListener(this);
+		remove.addActionListener(this);
+		
+		wpEditPanel.add(up);
+		wpEditPanel.add(down);
+		wpEditPanel.add(remove);
+		
+		listPanel.add(wpEditPanel, BorderLayout.SOUTH);
 		
 		save = new JButton(new ImageIcon("png/Save.png"));
 		load = new JButton(new ImageIcon("png/Open.png"));
@@ -117,6 +141,7 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		latLonPanel.add(lon);
 		bottomPanel.add(latLonPanel, BorderLayout.CENTER);
 		bottomPanel.add(addWaypoint, BorderLayout.SOUTH);
+		bottomPanel.setBorder(new TitledBorder("Add manually"));
 		
 		this.add(bottomPanel, BorderLayout.SOUTH);
 		
@@ -140,10 +165,35 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		
 	}
 	
+	private void remove(){
+		int n = wpList.getSelectedIndex();
+		if(n==-1) return;
+		this.waypoints.remove(n);
+		this.refresh();
+	}
+	
+	private void moveUp(){
+		int n = wpList.getSelectedIndex();
+		if(n==-1) return;
+		if(this.waypoints.moveUp(n)){
+			this.refresh();
+			this.wpList.setSelectedIndex(n-1);
+		}
+	}
+	
+	private void moveDown(){
+		int n = wpList.getSelectedIndex();
+		if(n==-1) return;
+		if(this.waypoints.moveDown(n)){
+			this.refresh();
+			this.wpList.setSelectedIndex(n+1);
+		}
+	}
+	
 	public void refresh(){
-		this.remove(wpList);
+		listPanel.remove(wpList);
 		wpList = new JList(new WaypointListModel()); //FIXME ugly, ugly way :(
-		this.add(wpList, BorderLayout.CENTER);
+		listPanel.add(wpList, BorderLayout.CENTER);
 		refreshMarkers();
 		this.validate();
 		this.repaint();
@@ -232,6 +282,12 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 			this.lon.setBackground(Color.WHITE);
 			this.waypoints.add(new Coordinate(lat, lon));
 			this.refresh();
+		}else if(arg0.getSource()==this.remove){
+			this.remove();
+		}else if(arg0.getSource()==this.up){
+			this.moveUp();
+		}else if(arg0.getSource()==this.down){
+			this.moveDown();
 		}
 		
 	}
