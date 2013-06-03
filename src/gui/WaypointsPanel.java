@@ -4,13 +4,14 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -18,8 +19,10 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -66,7 +69,10 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 	
 	JList wpList = new JList();
 	JButton load, save, clear;
-	JPanel buttonsPanel;
+	JPanel buttonsPanel, bottomPanel;
+	JPanel latLonPanel;
+	JTextField lat, lon;
+	JButton addWaypoint;
 	Waypoints waypoints;
 	boolean editable = false;
 
@@ -98,6 +104,22 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		buttonsPanel.add(clear);
 		
 		this.add(buttonsPanel, BorderLayout.NORTH);
+		
+		bottomPanel = new JPanel(new BorderLayout());
+		lat = new JTextField();
+		lon = new JTextField();
+		addWaypoint = new JButton("ADD");
+		addWaypoint.addActionListener(this);
+		latLonPanel = new JPanel(new GridLayout(2, 2));
+		latLonPanel.add(new JLabel("Lat:"));
+		latLonPanel.add(lat);
+		latLonPanel.add(new JLabel("Lon:"));
+		latLonPanel.add(lon);
+		bottomPanel.add(latLonPanel, BorderLayout.CENTER);
+		bottomPanel.add(addWaypoint, BorderLayout.SOUTH);
+		
+		this.add(bottomPanel, BorderLayout.SOUTH);
+		
 		
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
 		  .addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -191,6 +213,24 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 			this.refresh();
 		}else if(arg0.getSource()==this.clear){
 			this.waypoints.clearList();
+			this.refresh();
+		}else if(arg0.getSource()==this.addWaypoint){
+			double lat, lon;
+			try{
+				lat = Double.parseDouble(this.lat.getText());
+			}catch(NumberFormatException ex){
+				this.lat.setBackground(Color.RED);
+				return;
+			}
+			try{
+				lon = Double.parseDouble(this.lon.getText());
+			}catch(NumberFormatException ex){
+				this.lon.setBackground(Color.RED);
+				return;
+			}
+			this.lat.setBackground(Color.WHITE);
+			this.lon.setBackground(Color.WHITE);
+			this.waypoints.add(new Coordinate(lat, lon));
 			this.refresh();
 		}
 		
