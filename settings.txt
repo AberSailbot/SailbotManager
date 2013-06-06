@@ -1,9 +1,9 @@
 #Settings
-#Wed Jun 05 03:25:57 BST 2013
-mapLongitude=-4.08975
+#Thu Jun 06 15:13:57 BST 2013
 mapFolder=map
+mapLongitude=-4.08975
 mapMinZoomLevel=15
-serialPortName=/dev/ttyUSB0
 mapMaxZoomLevel=18
-followRobot=true
+serialPortName=/dev/ttyUSB0
 mapLattitude=52.41156
+followRobot=true

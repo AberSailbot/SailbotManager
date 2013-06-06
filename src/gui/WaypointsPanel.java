@@ -31,6 +31,7 @@ import javax.swing.text.html.StyleSheet.ListPainter;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.MapWaypointMarker;
 
+import data.DataSet;
 import data.Waypoints;
 
 /**
@@ -77,6 +78,7 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 	
 	JPanel wpEditPanel;
 	JButton up, down, remove;
+	JButton addFromPosition;
 	
 	JTextField lat, lon;
 	JButton addWaypoint;
@@ -130,6 +132,9 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 		this.add(buttonsPanel, BorderLayout.NORTH);
 		
 		bottomPanel = new JPanel(new BorderLayout());
+		addFromPosition = new JButton("Add current position");
+		addFromPosition.addActionListener(this);
+		bottomPanel.add(addFromPosition, BorderLayout.NORTH);
 		lat = new JTextField();
 		lon = new JTextField();
 		addWaypoint = new JButton("ADD");
@@ -288,6 +293,11 @@ public class WaypointsPanel extends JPanel implements MouseListener, ActionListe
 			this.moveUp();
 		}else if(arg0.getSource()==this.down){
 			this.moveDown();
+		}else if(arg0.getSource()==this.addFromPosition){
+			Number lat = DataSet.getInstance().getValueByKey("lat");
+			Number lon = DataSet.getInstance().getValueByKey("lon");
+			waypoints.add(new Coordinate(Double.parseDouble(lat.toString()), Double.parseDouble(lon.toString())));
+			this.refresh();
 		}
 		
 	}
