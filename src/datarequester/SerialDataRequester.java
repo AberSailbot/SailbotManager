@@ -12,12 +12,12 @@ public class SerialDataRequester extends Thread{
 
     public void run(){
         while(true){
-            if(currentCommandCharacter == 'l'){
+            if(currentCommandChar == 'l'){
                 serialPort.writeByte((byte)currentCommandChar);
             }
             else{
                 serialPort.writeString(currentCommandChar+currentData);
-                currentCommandCharacter = 'l';
+                currentCommandChar = 'l';
             }
         }
     }
