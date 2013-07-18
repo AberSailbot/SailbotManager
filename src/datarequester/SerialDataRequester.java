@@ -1,6 +1,6 @@
 import jssc.SerialPort;
 
-public class SerialDataRequester{
+public class SerialDataRequester extends Thread{
 
     char currentCommandChar = 'l';
     string? currentData = "";
