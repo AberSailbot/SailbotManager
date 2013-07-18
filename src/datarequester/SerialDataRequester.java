@@ -1,3 +1,4 @@
+package datarequester;
 import jssc.SerialPort;
 
 public class SerialDataRequester extends Thread{
