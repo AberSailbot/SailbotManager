@@ -26,14 +26,14 @@ public class SerialDataReceiver extends AbstractDataReceiver implements SerialPo
 		
 		serialPort = new SerialPort(port);
 		
-        try {
-            serialPort.openPort();
-            serialPort.setParams(115200, 8, 1, 0);
-            serialPort.addEventListener(this);
-        }
-        catch (SerialPortException ex){
-            System.out.println(ex);
-        }
+		try {
+		    serialPort.openPort();
+		    serialPort.setParams(115200, 8, 1, 0);
+		    serialPort.addEventListener(this);
+		}
+		catch (SerialPortException ex){
+		    System.out.println(ex);
+		}
 	}
 
 	@Override
