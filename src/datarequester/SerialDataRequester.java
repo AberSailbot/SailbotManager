@@ -3,7 +3,7 @@ import jssc.SerialPort;
 public class SerialDataRequester extends Thread{
 
     char currentCommandChar = 'l';
-    string? currentData = "";
+    String currentData = ""; //Should this be a string?
     SerialPort serialPort;
 
     public SerialDataRequester(SerialPort serialPort){
