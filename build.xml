@@ -3,13 +3,13 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="/home/kamil/Programming/SailbotManager/runSailbotManager.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="runSailbotManager.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="gui.RunSailbotManager"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="/home/kamil/Programming/SailbotManager/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="/home/kamil/Programming/SailbotManager/jssc.jar"/>
+            <fileset dir="bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="jssc.jar"/>
         </jar>
     </target>
 </project>
