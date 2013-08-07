@@ -3,8 +3,8 @@ import jssc.SerialPort;
 
 public class SerialDataRequester extends Thread{
 
-    char currentCommandChar = 'l';
-    String currentData = ""; //Should this be a string?
+    String currentCommand = "get_log;
+    String currentData = "";
     SerialPort serialPort;
 
     public SerialDataRequester(SerialPort serialPort){
@@ -13,12 +13,12 @@ public class SerialDataRequester extends Thread{
 
     public void run(){
         while(true){
-            if(currentCommandChar == 'l'){
-                serialPort.writeByte((byte)currentCommandChar);
+            if(currentCommand.equals("get_log") || currentCommand.equals("clear_waypoints"){
+                serialPort.writeString(currentCommand);
             }
             else{
-                serialPort.writeString(currentCommandChar+currentData);
-                currentCommandChar = 'l';
+                serialPort.writeString(currentCommand+" "+currentData);
+                currentCommandChar = "get_log";
             }
         }
     }
