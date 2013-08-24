@@ -15,7 +15,7 @@ import data.DataSet;
  * @author Kamil Mrowiec <kam20@aber.ac.uk>
  *
  */
-public class MockDataReceiver extends AbstractDataReceiver {
+public class MockDataReceiver extends AbstractDataConnector {
 
 	double fakeLat = 52.41156;
 	double fakeLon = -4.08975;
@@ -30,7 +30,7 @@ public class MockDataReceiver extends AbstractDataReceiver {
 	}
 
 	/**
-	 * @see datareceiver.AbstractDataReceiver#readDataString()
+	 * @see datareceiver.AbstractDataConnector#readDataString()
 	 */
 	@Override
 	protected String readDataString() {

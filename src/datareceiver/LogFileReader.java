@@ -15,7 +15,7 @@ import data.DataSet;
  * @author Kamil Mrowiec <kam20@aber.ac.uk>
  * @version 1.0 (5 May 2013)
  */
-public class LogFileReader extends AbstractDataReceiver{
+public class LogFileReader extends AbstractDataConnector{
 
 	private File logFile;
 	private LinkedList<String> lines;

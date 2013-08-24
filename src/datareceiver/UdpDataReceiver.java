@@ -15,7 +15,7 @@ import data.DataSet;
  * @author Kamil Mrowiec <kam20@aber.ac.uk>
  *
  */
-public class UdpDataReceiver extends AbstractDataReceiver {
+public class UdpDataReceiver extends AbstractDataConnector {
 
 	DatagramSocket ds;
 	
@@ -32,7 +32,7 @@ public class UdpDataReceiver extends AbstractDataReceiver {
 
 	/**
 	 * Reads the UDP packet
-	 * @see datareceiver.AbstractDataReceiver#readDataString()
+	 * @see datareceiver.AbstractDataConnector#readDataString()
 	 */
 	@Override
 	protected String readDataString() {

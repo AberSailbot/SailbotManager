@@ -22,10 +22,10 @@ import org.openstreetmap.gui.jmapviewer.tilesources.OfflineOsmTileSource;
 import data.DataSet;
 import data.Settings;
 import data.Waypoints;
-import datareceiver.AbstractDataReceiver;
+import datareceiver.AbstractDataConnector;
 import datareceiver.LogFileReader;
 import datareceiver.MockDataReceiver;
-import datareceiver.SerialDataReceiver;
+import datareceiver.SerialDataConnector;
 
 /**
  * @author Kamil Mrowiec <kam20@aber.ac.uk>
@@ -48,7 +48,7 @@ public class RobotManagerFrame extends JFrame implements WindowListener {
 	
 	boolean followBoat;
 	
-	AbstractDataReceiver activeDataReceiver;
+	AbstractDataConnector activeDataConnector;
 	LogFileReader logFileReader;
 	
 
@@ -105,7 +105,12 @@ public class RobotManagerFrame extends JFrame implements WindowListener {
 		
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(sidePanel, BorderLayout.WEST);
-		this.getContentPane().add(map, BorderLayout.CENTER);
+		
+		JPanel centerPanel = new JPanel(new BorderLayout());
+		centerPanel.add(new BoatControlPanel(), BorderLayout.SOUTH);
+		centerPanel.add(map, BorderLayout.CENTER);
+		
+		this.getContentPane().add(centerPanel, BorderLayout.CENTER);
 		
 		map.addMouseListener(this.wpPanel);
 		this.setVisible(true);
@@ -124,8 +129,8 @@ public class RobotManagerFrame extends JFrame implements WindowListener {
 		
 			
 		while(true){
-			if(this.activeDataReceiver!=null){
-				activeDataReceiver.updateDataSet();
+			if(this.activeDataConnector!=null){
+				activeDataConnector.updateDataSet();
 				tp.updatePanel();
 				this.updateBoatPosition();
 				this.invalidate();
@@ -142,20 +147,20 @@ public class RobotManagerFrame extends JFrame implements WindowListener {
 	public void setDataSource(String dataSource){
 		switch(dataSource){
 		case "none":
-			this.activeDataReceiver = null;
+			this.activeDataConnector = null;
 			this.controller.setVisible(false);
 			break;
 		case "mock":
-			this.activeDataReceiver = new MockDataReceiver(dataSet);
+			this.activeDataConnector = new MockDataReceiver(dataSet);
 			this.controller.setVisible(false);
 			break;
 		case "serial":
 			String portName = Settings.getString(Settings.SERIAL_PORT);
-			this.activeDataReceiver = new SerialDataReceiver(dataSet, portName);
+			this.activeDataConnector = new SerialDataConnector(dataSet, portName);
 			this.controller.setVisible(false);
 			break;
 		case "logfile":
-			this.activeDataReceiver = this.logFileReader;
+			this.activeDataConnector = this.logFileReader;
 			this.controller.refresh();
 			this.controller.setVisible(true);
 		}
@@ -225,6 +230,22 @@ public class RobotManagerFrame extends JFrame implements WindowListener {
 	public void windowOpened(WindowEvent arg0){
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Waypoints getWaypoints(){
+		return waypoints;
+	}
+
+	public void setWaypoints(Waypoints waypoints){
+		this.waypoints = waypoints;
+	}
+
+	public AbstractDataConnector getActiveDataConnector(){
+		return activeDataConnector;
+	}
+
+	public void setActiveDataConnector(AbstractDataConnector activeDataConnector){
+		this.activeDataConnector = activeDataConnector;
 	}
 
 }
