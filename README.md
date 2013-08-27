@@ -14,12 +14,20 @@ Its main features are:
 ## Compiling
 
 Apache Ant and Java 1.7 are required to build the program.
-To compile, simply run
+The script will compile all the classes into bin directory and create 
+a runnable jar file called runSailbotManager.jar
+
+To compile, run
+
+>ant compile
+
+then just
 
 >ant
 
-The script will compile all the classes into bin directory and create 
-a runnable jar file called runSailbotManager.jar
+to create a runnable jar.
+
+
 
 ## Running
 
