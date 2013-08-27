@@ -72,6 +72,7 @@ public class SerialDataConnector extends AbstractDataConnector implements Serial
 	@Override
 	public void sendMessage(String message){
 		try{
+			System.out.println("Sending " + message + END_CHAR);
 			serialPort.writeString(message + END_CHAR);
 		}catch(SerialPortException ex){
 			ex.printStackTrace();

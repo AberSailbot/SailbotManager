@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project SailbotManager">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
+<project default="create_run_jar" name="Create Runnable Jar for SailbotManager">
+    
+    <!-- ANT 1.7 is required -->
+    
+    <target name="compile">
+        <delete dir="bin" />
+        <mkdir dir="bin" />
+        <javac srcdir="src" destdir="bin"/>
+    </target>
+    
     <target name="create_run_jar">
-        <jar destfile="/home/kamil/Programming/SailbotManager/runSailbotManager.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="./runSailbotManager.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="gui.RunSailbotManager"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="/home/kamil/Programming/SailbotManager/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="/home/kamil/Programming/SailbotManager/jssc.jar"/>
+            <fileset dir="./bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="./jssc.jar"/>
         </jar>
     </target>
+    
 </project>

@@ -38,7 +38,7 @@ public abstract class AbstractDataConnector {
 	 * Sends a message.
 	 */
 	public void sendMessage(String message){
-		System.out.println("Send message not supported.");
+		System.out.println("Sending " + message + " : Send message not supported");
 	}
 	
 	
