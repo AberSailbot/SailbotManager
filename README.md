@@ -3,11 +3,12 @@ SailbotManager
 
 Sailbot Manager provides a GUI to operate the boat over remote serial connection, using XBee.
 Its main features are:
-*creating a list of waypoints and saving it to a file
-*sending waypoints to the boat
-*receiving live telemetry data from the robot
-*displaying current position of the boat on a map
-*reading and rendering logged data
+
+* creating a list of waypoints and saving it to a file
+* sending waypoints to the boat
+* receiving live telemetry data from the robot
+* displaying current position of the boat on a map
+* reading and rendering logged data
 
 
 ## Compiling
