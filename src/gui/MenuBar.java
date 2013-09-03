@@ -52,14 +52,17 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		JMenuItem aber = new JMenuItem("Aberystwyth");
 		JMenuItem lake = new JMenuItem("Llyn-yr-oerfa");
 		JMenuItem gloucesterHarbour = new JMenuItem("Gloucester Harbor, MA");
+		JMenuItem brest = new JMenuItem("Brest");
 		
 		aber.addActionListener(this);
 		lake.addActionListener(this);
 		gloucesterHarbour.addActionListener(this);
+		brest.addActionListener(this);
 		
 		jumpMenu.add(aber);
 		jumpMenu.add(lake);
 		jumpMenu.add(gloucesterHarbour);
+		jumpMenu.add(brest);
 		
 		mock.addActionListener(this);
 		serial.addActionListener(this);
@@ -99,6 +102,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
 			break;
 		case "Gloucester Harbor, MA":
 			RobotManagerFrame.getInstance().getMap().setDisplayPositionByLatLon(42.5976, -70.6675, 14);
+			break;
+		case "Brest":
+			RobotManagerFrame.getInstance().getMap().setDisplayPositionByLatLon(48.391263, -4.43455, 16);
 			break;
 		}
 		

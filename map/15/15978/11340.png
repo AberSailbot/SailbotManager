@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        
+        <title>Connexion à Points d'accés de la ville de Brest et de Brest métropole océane chez Ville de Brest et Brest métropole océane</title>
+                  <link rel="stylesheet" type="text/css" href="http://wifidog.brest-metropole-oceane.fr/media/base_theme/stylesheet.css">
+        		<script src="http://wifidog.brest-metropole-oceane.fr/js/formutils.js" type="text/javascript"></script>
+		<script src="http://wifidog.brest-metropole-oceane.fr/js/addEvent.js"  type="text/javascript"></script>
+    </head>
+    <body id='page' class='login'>
+    	        	<div id='page_header'>
+            							<h1><span>Bienvenue chez</span><em>Ville de Brest et Brest métropole océane</em></h1><div class='user_ui_main_outer TrivialLangstring '>
+<div class='user_ui_main_inner'>
+
+<div class='user_ui_main_content'>Conformément à la loi de Sécurité Nationale (loi 2006-64 du 23 janvier 2006), la ville de Brest et Brest métropole océane contrôlent les accès à Internet sur tous les points d’accès mis à la disposition du public. Les informations enregistrées sont réservées à l’usage du service concerné et ne peuvent être communiquées qu’aux destinataires suivants : Services de police et de gendarmerie dans le cadre d'une commission rogatoire.</div>
+</div>
+</div>
+<div class='user_ui_main_outer TrivialLangstring '>
+<div class='user_ui_main_inner'>
+
+<div class='user_ui_main_content'>Conformément aux articles 39 et suivants de la loi n° 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, toute personne peut obtenir communication et, le cas échéant, rectification ou suppression des informations la concernant, en s’adressant au Correspondant Informatique et Libertés à l'adresse suivante : correspondant.informatique.libertes@brest-metropole-oceane.fr</div>
+</div>
+</div>
+<div class='user_ui_main_outer TrivialLangstring '>
+<div class='user_ui_main_inner'>
+
+<div class='user_ui_main_content'>En tant qu’utilisateur de cet accès wifi, vous vous engagez à ne pas utiliser cet accès à des fins de reproduction, de  représentation, de mise à disposition ou de communication au public, d’œuvres ou d’objets protégés par un droit d’auteur ou un droit voisin, tels que des textes, des images, des photographies,  des œuvres musicales, des œuvres audiovisuelles, des logiciels et jeux vidéo, sans autorisation.  Toute infraction à cette règle  constitue un délit de contrefaçon (article 335-3 du code la propriété intellectuelle)</div>
+</div>
+</div>
+
+        	        	</div>
+    	        <div id="page_body">
+                        <div id="left_area">
+	                	                <div id="left_area_top">
+	                    
+        <div class="tool_user_info">
+                					
+                    <a class="administration" href=""><img class="administration" src="http://wifidog.brest-metropole-oceane.fr/media/common_images/lien_ext.gif">&nbsp;Points d'accés de la ville de Brest et de Brest métropole océane</a>
+                    <a class="administration" href="http://wifidog.brest-metropole-oceane.fr/faq.php"><img class="administration" src="http://wifidog.brest-metropole-oceane.fr/media/common_images/where.gif">&nbsp;Où suis-je ?</a>
+                        </div>
+
+                <div class="language">
+            <form class="language" name="lang_form" method="post" action="/login/?gw_address=172.26.0.1&gw_port=2060&gw_id=hcu17&url=http%3A//c.tile.openstreetmap.org/15/15978/11340.png">
+                <div>Langue:
+                <select name="wifidog_language" onchange="javascript: document.lang_form.submit();">
+                                            <option label="Français" value="fr_CA" selected="selected">Français</option>
+                                            <option label="English" value="en_US">English</option>
+                                            <option label="Deutsch" value="de_DE">Deutsch</option>
+                                            <option label="Español" value="es_ES">Español</option>
+                                            <option label="Português" value="pt_BR">Português</option>
+                                            <option label="日本語" value="ja_JP">日本語</option>
+                                    </select>
+                </div>
+            </form>
+        </div>
+        
+        <div class="tool_content">
+            
+        </div>
+
+<div class='user_ui_main_outer TrivialLangstring '>
+<div class='user_ui_main_inner'>
+
+<div class='user_ui_main_content'>Pour tout renseignement, s'adresser au service utilisateurs de la Direction des Systèmes d'Information et Télécommunication au (02 98 33) 55 55.</div>
+</div>
+</div>
+
+	                </div>
+	                	                	                                </div>
+                                <div id="main_area">
+	                	                <div id="main_area_top">
+	                        <div id="login_form">
+        <h1>Connectez-vous ou créez un compte ici:</h1>
+        <form name="login_form" action="http://wifidog.brest-metropole-oceane.fr/login/index.php" method="post" onsubmit="return validateForm(this);">
+        		<input type="hidden" name="form_request" value="login">
+                            <input type="hidden" name="gw_address" value="172.26.0.1">
+                                        <input type="hidden" name="gw_port" value="2060">
+                                        <input type="hidden" name="gw_id" value="hcu17">
+                        
+			<p>
+            Réseau : 
+ Points d'accés de la ville de Brest et de Brest métropole océane <input type='hidden' name='auth_source' value='default-network'>
+            </p>
+
+            Utilisateur (ou courriel):<br/>
+            <input type="text" name="username" id="form_username" tabindex="1" value="" size="20" /><br/>
+            Mot de passe:<br/>
+            <input type="password" name="password" id="form_password" tabindex="2" size="20" /><br/>
+
+            <div id="form_errormsg" class="errormsg">
+						  &nbsp;
+						</div>
+
+            <input class="submit" type="submit" tabindex="3" name="form_submit" value="Ouvrir une session" />&nbsp;
+            <input class="submit" type="button" tabindex="4" name="form_signup" value="Créer un compte gratuit" onclick="location.href='http://wifidog.brest-metropole-oceane.fr/signup.php';" />
+        </form>
+    </div>
+    <div id="login_help">
+        <h1>J'éprouve des difficultés:</h1>
+        <ul>
+            <li><a href="http://wifidog.brest-metropole-oceane.fr/lost_username.php">J'ai oublié mon nom d'utilisateur</a></li>
+            <li><a href="http://wifidog.brest-metropole-oceane.fr/lost_password.php">J'ai oublié mon mot de passe</a></li>
+            <li><a href="http://wifidog.brest-metropole-oceane.fr/resend_validation.php">Envoyez-moi de nouveau le courriel de validation</a></li>
+            <li><a href="http://wifidog.brest-metropole-oceane.fr/faq.php">Foire aux questions (FAQ)</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        <!--
+		
+		var messages = {
+		
+		  empty_form: "Veuillez entrer un nom d'usager et un mot de passe",
+		  username_required: "Le nom d'utilisateur est requis.",
+		  username_invalid: "Le nom d'utilisateur contient des caractères invalides.",
+		  email_invalid: "Une adresse courriel est requise.",
+		  password_empty: "A password is required.",
+		  password_invalid: "Le mot de passe contient des caractères invalides.",
+		  password_short: "Password is too short, it must be 6 characters minimum"
+		
+		};
+
+		document.getElementById("form_username").focus();
+
+		function validateForm(form) {
+		  if (!isValidUsername(form.username)) {
+			if (isEmpty(form.username)) {
+			  document.getElementById("form_errormsg").innerHTML = messages.username_required;
+			  return false;
+			}
+			else {
+			  if (!isValidEmail(form.username)) {
+				document.getElementById("form_errormsg").innerHTML = messages.username_invalid;
+				return false;
+			  }
+			}
+		  }
+
+
+			if (isEmpty(form.password)){
+			  document.getElementById("form_errormsg").innerHTML = messages.password_empty;
+			return false;
+		  }
+
+		  return true;
+		}
+
+		
+        //-->
+    </script>
+	                </div>
+	                	                	                                </div>
+                          </div>
+    
+            </body>
+</html>
