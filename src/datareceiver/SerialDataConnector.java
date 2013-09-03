@@ -59,7 +59,7 @@ public class SerialDataConnector extends AbstractDataConnector implements Serial
 				int n = buffer.indexOf(END_CHAR);
 				if(n != -1){
 					latestData = buffer.substring(0, n);
-					buffer = buffer.substring(n+1, buffer.length()-1);
+					buffer = buffer.substring(n+1, buffer.length());
 				}
 			} catch (SerialPortException e) {
 				e.printStackTrace();
