@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 
@@ -26,6 +29,9 @@ public class BoatControlPanel extends JPanel implements ActionListener{
 	
 	private JButton sendWaypointsButton;
 	private JComboBox modeSelector;
+	private JSpinner wpSelector;
+	private JButton changeWpButton;
+	
 	
 	public BoatControlPanel(){
 		setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -35,23 +41,44 @@ public class BoatControlPanel extends JPanel implements ActionListener{
 		sendWaypointsButton = new JButton("SEND WPS TO BOAT");
 		sendWaypointsButton.addActionListener(this);
 		
+		wpSelector = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
+		
+		changeWpButton = new JButton("GO TO WP");
+		changeWpButton.addActionListener(this);
+		
 		this.add(modeSelector);
 		this.add(sendWaypointsButton);
+		
+		this.add(new JSeparator());
+		
+		this.add(wpSelector);
+		this.add(changeWpButton);
+		
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0){
+		RobotManagerFrame frame = RobotManagerFrame.getInstance();
 		if(arg0.getSource()==this.sendWaypointsButton){
-			RobotManagerFrame frame = RobotManagerFrame.getInstance();
-			StringBuilder message = new StringBuilder("set");
-			message.append(" ").append(modeSelector.getSelectedItem().toString());
+			StringBuilder message = new StringBuilder("set waypoints");
+			//message.append(" ").append(modeSelector.getSelectedItem().toString());
 			for(Coordinate point : frame.getWaypoints().getPoints()){
 				message.append(" ").append(point.getLat())
 				   	   .append(";").append(point.getLon());
 			}
 			AbstractDataConnector sender = frame.getActiveDataConnector();
 			if(sender != null)
-				sender.sendMessage(message.append(SerialDataConnector.END_CHAR).toString());
+				sender.sendMessage(message.toString());
+		}else if(arg0.getSource() ==this.changeWpButton){
+			int wpNum = (int) this.wpSelector.getValue();
+			if(wpNum >= 0 && wpNum < frame.getWaypoints().getPoints().size()){
+				AbstractDataConnector sender = frame.getActiveDataConnector();
+				if(sender != null)
+					sender.sendMessage("set waypoint " + wpNum);
+			}else{
+				System.out.println("Incorrect waypoint number selected! Cannot send to boat.");
+			}
 		}
 		
 	}
