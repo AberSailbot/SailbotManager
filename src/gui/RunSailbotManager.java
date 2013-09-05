@@ -22,6 +22,7 @@ public class RunSailbotManager {
 		.addDataCell("nwn", "Next waypoint number")
 		.addDataCell("nwlat", "Next WP lattitude")
 		.addDataCell("nwlon", "Next WP longitiude")
+		.addDataCell("temp", "Temperature")
 		.addDataCell("time", "Timestamp");
 		
 		
