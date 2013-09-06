@@ -12,8 +12,8 @@ public class RunSailbotManager {
 		.addDataCell("lon", "Longitiude")
 		.addDataCell("speed", "Speed")
 		.addDataCell("bhead", "Boat heading")
-		.addDataCell("thead", "Target heading")
-		.addDataCell("tdist", "Target distance")
+		.addDataCell("targetheading", "Target heading")
+		.addDataCell("targetdistance", "Target distance")
 		.addDataCell("whead", "Waypoint heading")
 		.addDataCell("distance", "Waypoint distance")
 		.addDataCell("wind", "Wind direction")
@@ -23,7 +23,8 @@ public class RunSailbotManager {
 		.addDataCell("nwlat", "Next WP lattitude")
 		.addDataCell("nwlon", "Next WP longitiude")
 		.addDataCell("temp", "Temperature")
-		.addDataCell("time", "Timestamp");
+		.addDataCell("time", "Timestamp")
+		.addDataCell("status", "Status");
 		
 		
 		RobotManagerFrame frame = RobotManagerFrame.getInstance();

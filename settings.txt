@@ -1,5 +1,5 @@
 #Settings
-#Thu Sep 05 10:16:04 BST 2013
+#Fri Sep 06 11:59:48 BST 2013
 mapFolder=map
 mapLongitude=-4.08975
 mapMinZoomLevel=12
